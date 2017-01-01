@@ -68,6 +68,20 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <CheckBox
+            android:id="@+id/recordarmeLogin"
+            android:paddingLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recordarme"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:text="@string/ingresarLogin"/>
+
     </LinearLayout>
 
 

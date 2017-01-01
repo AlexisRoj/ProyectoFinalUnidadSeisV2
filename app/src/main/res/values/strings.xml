@@ -10,5 +10,7 @@
     <string name="txtAsistenciaLogin">Inicia sección para comenzar</string>
     <string name="userNameLogin">Nombre de Usuario</string>
     <string name="userNamePass">Contraseña</string>
+    <string name="recordarme">Recordarme</string>
+    <string name="ingresarLogin">Ingresar</string>
 
 </resources>

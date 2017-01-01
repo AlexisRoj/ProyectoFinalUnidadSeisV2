@@ -5,4 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_Login">Ingreso al sistema</string>
+    <string name="txtTitleLogin">Bienvenidos a Parking Control</string>
+    <string name="txtAsistenciaLogin">Inicia sección para comenzar</string>
+    <string name="userNameLogin">Nombre de Usuario</string>
+    <string name="userNamePass">Contraseña</string>
+
 </resources>

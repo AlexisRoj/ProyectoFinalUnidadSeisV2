@@ -40,9 +40,9 @@
         app:srcCompat="@drawable/parking" />
 
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
@@ -60,27 +60,29 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
+                android:id="@+id/userNamePass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/userNamePass"
-                android:hint="@string/userNamePass"/>
+                android:hint="@string/userNamePass" />
 
         </android.support.design.widget.TextInputLayout>
 
         <CheckBox
             android:id="@+id/recordarmeLogin"
-            android:paddingLeft="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/recordarme"/>
+            android:paddingLeft="5dp"
+            android:text="@string/recordarme" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="15dp"
             android:layout_gravity="center"
-            android:text="@string/ingresarLogin"/>
+            android:padding="5dp"
+            android:id="@+id/ingresarLogin"
+            android:text="@string/ingresarLogin" />
 
     </LinearLayout>
 

@@ -12,5 +12,6 @@
     <string name="userNamePass">Contraseña</string>
     <string name="recordarme">Recordarme</string>
     <string name="ingresarLogin">Ingresar</string>
+    <string name="emptyText">No puede existir campos vacios</string>
 
 </resources>

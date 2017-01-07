@@ -79,30 +79,37 @@ public class Login extends AppCompatActivity {
 
     private void onClickEvent() {
         CheckBox checkBox = (CheckBox) findViewById(R.id.recordarmeLogin);
-        Boolean iniciarActivity = false;
+
         /**
          * Valida los campos que no vengan vacios, ni nulos
          * */
-        String login = null;
-        if (userNameLogin != null && userNameLogin.getEditText() != null) {
+        EditText editTextLogin = userNameLogin.getEditText();
+        String usuario = null;
 
-            login = userNameLogin.getEditText().toString();
+        EditText edtitTextPass = userNamePass.getEditText();
+        String pass = null;
 
-            if (login != null && login.isEmpty()) {
-                iniciarActivity = true;
-            }else
-                userNameLogin.setError(getString(R.string.emptyText));
+        if (edtitTextPass != null && edtitTextPass.getText() != null){
+            pass = edtitTextPass.getText().toString();
         }
 
-        String pass;
-        if (userNamePass != null && userNamePass.getEditText() != null) {
+        if (editTextLogin != null && editTextLogin.getText() != null){
+            usuario = editTextLogin.getText().toString();
+        }
 
-            pass = userNamePass.getEditText().toString();
+        Boolean iniciarActivity = true;
+        /**
+         *  La aplicacion inicia por defecto la validacion lo cambia
+         *  */
 
-            if (pass != null && pass.isEmpty()) {
-                iniciarActivity = true;
-            }else
-                userNamePass.setError(getString(R.string.emptyText));
+        if ("".equals(usuario)){
+            iniciarActivity = false;
+            userNameLogin.setError(getString(R.string.emptyText));
+        }
+
+        if ("".equals(pass)){
+            iniciarActivity = false;
+            userNamePass.setError(getString(R.string.emptyText));
         }
 
         if (iniciarActivity) {
@@ -115,7 +122,7 @@ public class Login extends AppCompatActivity {
                  * del sistema
                  * */
                 SharedPreferences.Editor edit = pref.edit();
-                edit.putString(PreferenceConstant.PREF_KEY_USERNAME, login);
+                edit.putString(PreferenceConstant.PREF_KEY_USERNAME, usuario);
                 edit.apply();
                 cargarActivity();
             } else

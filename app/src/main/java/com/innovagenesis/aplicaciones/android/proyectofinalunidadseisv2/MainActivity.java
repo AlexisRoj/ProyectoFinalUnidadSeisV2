@@ -20,13 +20,31 @@ import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragment
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_main,new ParkingFragment())
+                .commit();
+
+        /** Se instancia el toolbar*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /** Se instancian el drawer y el navigation*/
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        /**
+         * Boton Flotante
+         * */
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,16 +54,29 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+
+    public void updateView(String title, String subTitle) {
+        /** Actualiza el titulo y subtitulo del toolbar*/
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            toolbar.setTitle(title);
+            toolbar.setSubtitle(subTitle);
+        }
+        setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        drawerLayout.addDrawerListener(toggle);
+
+        toggle.syncState();
+
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -110,16 +141,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void updateView(String title, String subTitle) {
-        /** Actualiza el titulo y subtitulo del toolbar*/
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            toolbar.setTitle(title);
-            toolbar.setSubtitle(subTitle);
-        }
-        setSupportActionBar(toolbar);
 
-    }
+
 
 
 

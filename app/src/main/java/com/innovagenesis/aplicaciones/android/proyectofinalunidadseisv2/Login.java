@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
         pref = getSharedPreferences(PreferenceConstant.PREFERENCE_LOGIN, MODE_PRIVATE);
         username = pref.getString(PreferenceConstant.PREF_KEY_USERNAME, null);
 
-        borrarPreference();
+        //borrarPreference();
 
         if (username != null) {
             /**

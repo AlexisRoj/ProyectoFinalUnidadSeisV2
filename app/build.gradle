@@ -5,6 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2"
+        vectorDrawables.useSupportLibrary = true
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1

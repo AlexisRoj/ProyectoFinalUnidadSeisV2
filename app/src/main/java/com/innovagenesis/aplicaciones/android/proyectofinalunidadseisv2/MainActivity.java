@@ -123,7 +123,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             }
             case R.id.account:{
-                fragment = new AccountFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_main, new AccountFragment())
+                        .commit();
                 break;
             }
         }

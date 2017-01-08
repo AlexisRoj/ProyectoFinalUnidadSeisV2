@@ -19,5 +19,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nombre_app">Parking Control</string>
+    <string name="nombUser">Nombre de Usuario</string>
+    <string name="descNombUser">El nombre con el que se identifica en la APP</string>
+    <string name="passUser">Contraseña del usuario</string>
+    <string name="descPassUser">Clave para iniciar seccion en la app</string>
+    <string name="notifyMail">Notificaciones por correo</string>
+    <string name="descNotifyMail">Recibe notificaciones de la aplicacion, noticias e informacion relevante en tu cuenta</string>
 
 </resources>

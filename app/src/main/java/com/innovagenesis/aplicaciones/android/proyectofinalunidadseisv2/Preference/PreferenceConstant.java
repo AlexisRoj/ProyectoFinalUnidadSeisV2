@@ -1,4 +1,4 @@
-package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.Preference;
+package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preference;
 
 /**
  * Administra las preferences del login

@@ -1,5 +1,6 @@
 package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.AccountFragment;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.ParkingFragment;
 
@@ -22,6 +27,12 @@ public class MainActivity extends AppCompatActivity
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +41,7 @@ public class MainActivity extends AppCompatActivity
 
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_main,new ParkingFragment())
+                .replace(R.id.content_main, new ParkingFragment())
                 .commit();
 
         /** Se instancia el toolbar*/
@@ -45,7 +56,8 @@ public class MainActivity extends AppCompatActivity
         /**
          * Boton Flotante
          * */
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +67,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
 
@@ -74,8 +87,17 @@ public class MainActivity extends AppCompatActivity
 
         toggle.syncState();
 
-    }
+        /**
+         *  Muestra y oculta el boton flotante
+         * */
 
+        if (!subTitle.equals(getString(R.string.cuenta))) {
+            fab.setVisibility(View.VISIBLE);
+        } else {
+            fab.setVisibility(View.INVISIBLE);
+        }
+
+    }
 
 
     @Override
@@ -117,12 +139,12 @@ public class MainActivity extends AppCompatActivity
 
         Fragment fragment = null;
 
-        switch (id){
-            case R.id.parking:{
+        switch (id) {
+            case R.id.parking: {
                 fragment = new ParkingFragment();
                 break;
             }
-            case R.id.account:{
+            case R.id.account: {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_main, new AccountFragment())
                         .commit();
@@ -134,7 +156,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
 
-        if (fragment != null){
+        if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_main, fragment)
                     .commit();
@@ -142,9 +164,6 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
-
-
-
 
 
 

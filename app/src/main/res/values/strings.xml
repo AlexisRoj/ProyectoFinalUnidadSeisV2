@@ -25,5 +25,20 @@
     <string name="descPassUser">Clave para iniciar seccion en la app</string>
     <string name="notifyMail">Notificaciones por correo</string>
     <string name="descNotifyMail">Recibe notificaciones de la aplicacion, noticias e informacion relevante en tu cuenta</string>
+    <string name="spinner_vehiculo">Elija el tipo de vehiculo</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="btnAgregar">Agregar</string>
+    <string name="no_de_matricula">No. de Matricula</string>
+    <string name="id_del_cliente">ID del cliente</string>
+
+    <!--Array Spinner Vehiculo-->
+
+    <string-array name="tiposVehiculos">
+
+        <item>Sedan</item>
+        <item>PickUp</item>
+        <item>OFFRoad</item>
+        <item>Copupe</item>
+    </string-array>
 
 </resources>

@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
 
-   /*     getSupportFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_main, new ParkingFragment())
-                .commit();*/
+                .commit();
 
         /** Se instancia el toolbar*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-
                 /**
                  * Ejecuta el dialogo que guarda el elemento*/
                 DialogoAgregarVehiculo dialogo = new DialogoAgregarVehiculo();
@@ -85,57 +84,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        crearRecycleView();
+
 
         navigationView.setNavigationItemSelectedListener(this);
 
     }
 
-    private void crearRecycleView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        try {
-            adapter = new VehiculoAdapter(this, ServicioVehiculos.getInstance(this).cargarDatos(),
-                    new VehiculoAdapter.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(VehiculoAdapter.VehiculoViewHolder holder, int position) {
-                            confirmacion(position);
-                        }
-                    });
-        }catch (IOException e){
-            Toast.makeText(MainActivity.this, "Error al cargar el archivo", Toast.LENGTH_SHORT).show();
-        }catch (ClassNotFoundException e){
-            Toast.makeText(MainActivity.this, "Error al cargar la lista", Toast.LENGTH_SHORT).show();
-        }
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-    }
-
-
-    public void confirmacion(final int position){
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("¿Está seguro de que desea eliminar el elemento?")
-                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            ServicioVehiculos.getInstance(MainActivity.this).eliminar(position);
-                        } catch (IOException e) {
-                            Toast.makeText(MainActivity.this, "Error al actualizar el archivo", Toast.LENGTH_SHORT).show();
-                        } catch (ClassNotFoundException e) {
-                            Toast.makeText(MainActivity.this, "Error al eliminar el elemento", Toast.LENGTH_SHORT).show();
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                }).create().show();
-    }
 
 
     public void updateView(String title, String subTitle) {
@@ -208,8 +163,8 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.parking: {
-                crearRecycleView();
-                //fragment = new ParkingFragment();
+                //crearRecycleView();
+                fragment = new ParkingFragment();
                 break;
             }
             case R.id.account: {

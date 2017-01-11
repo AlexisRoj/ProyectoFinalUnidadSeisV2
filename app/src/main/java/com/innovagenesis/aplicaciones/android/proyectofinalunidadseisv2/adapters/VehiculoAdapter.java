@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.MainActivity;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +22,8 @@ import java.util.List;
  */
 
 public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.VehiculoViewHolder> {
+
+
 
 
     public interface OnItemClickListener{
@@ -58,10 +62,11 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
     private List<Vehiculo> vehiculo;
     private Activity activity;
 
-    public VehiculoAdapter(OnItemClickListener listener, List<Vehiculo> vehiculo, Activity activity) {
-        this.listener = listener;
-        this.vehiculo = vehiculo;
+    public VehiculoAdapter(Activity activity, List<Vehiculo> vehiculo, OnItemClickListener listener) {
+
         this.activity = activity;
+        this.vehiculo = vehiculo;
+        this.listener = listener;
     }
 
 

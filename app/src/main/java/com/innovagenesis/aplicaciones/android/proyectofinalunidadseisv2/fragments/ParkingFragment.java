@@ -33,14 +33,11 @@ import static com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.R
 public class ParkingFragment extends Fragment{
 
     private View view;
-    private VehiculoAdapter adapter;
+    public VehiculoAdapter adapter;
     public ParkingFragment() {
         // Required empty public constructor
     }
 
-    public interface OnClickGuardarVehiculo{
-        void onGuardarVehiculo(Vehiculo adapter);
-    }
 
 
     @Override
@@ -48,9 +45,7 @@ public class ParkingFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
         view = inflater.inflate(R.layout.fragment_parking, container, false);
-
         /**
          * Cambia los titulos del toolbar
          * */
@@ -83,10 +78,12 @@ public class ParkingFragment extends Fragment{
             Toast.makeText(getContext(), "Error al cargar la lista", Toast.LENGTH_SHORT).show();
         }
 
+        /** Agraga el adapter al Recycleview*/
+        adapter.notifyDataSetChanged();
+        /** Actualiza el recycleView*/
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-
     }
 
 

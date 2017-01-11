@@ -1,14 +1,11 @@
 package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2;
 
-import android.content.DialogInterface;
-import android.net.Uri;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,16 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.Vehiculo;
-import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.VehiculoAdapter;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.dialogo.DialogoAgregarVehiculo;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.AccountFragment;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.ParkingFragment;
+import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preference.PreferenceConstant;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preference.ServicioVehiculos;
 
 import java.io.IOException;
@@ -136,9 +128,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.exportar_registros) {
             return true;
         }
+        if (id == R.id.logout){
+            borrarPreference();
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -176,9 +173,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
-    private VehiculoAdapter adapter;
-
     @Override
     public void onAgregarVehiculo(Vehiculo vehiculo) {
          /**
@@ -191,6 +185,22 @@ public class MainActivity extends AppCompatActivity
         } catch (ClassNotFoundException e) {
             Toast.makeText(MainActivity.this, "Error al guardar elemento en la lista", Toast.LENGTH_SHORT).show();
         }
-        adapter.notifyDataSetChanged();
+    }
+
+
+    public void borrarPreference() {
+
+        SharedPreferences pref = getSharedPreferences(PreferenceConstant.PREFERENCE_LOGIN, MODE_PRIVATE);
+
+        /** Borra las preferencias */
+        SharedPreferences.Editor edit = pref.edit();
+        edit.remove(PreferenceConstant.PREF_KEY_USERNAME);
+        edit.apply();
+
+        Intent intent = new Intent(MainActivity.this,Login.class);
+        startActivity(intent);
+
+        //finish();
+
     }
 }

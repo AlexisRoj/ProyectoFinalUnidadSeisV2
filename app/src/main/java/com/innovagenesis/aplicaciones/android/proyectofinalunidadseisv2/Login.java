@@ -134,13 +134,6 @@ public class Login extends AppCompatActivity {
         finish();
     }
 
-    public void borrarPreference() {
 
-        /** Borra las preferencias */
-        SharedPreferences.Editor edit = pref.edit();
-        edit.remove(PreferenceConstant.PREF_KEY_USERNAME);
-        edit.apply();
-
-    }
 
 }

@@ -30,6 +30,8 @@
     <string name="btnAgregar">Agregar</string>
     <string name="no_de_matricula">No. de Matricula</string>
     <string name="id_del_cliente">ID del cliente</string>
+    <string name="exportar_registros">Exportar Registros</string>
+    <string name="logout">Cerrar sección</string>
 
     <!--Array Spinner Vehiculo-->
 

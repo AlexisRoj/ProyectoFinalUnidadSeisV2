@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    private VehiculoAdapter adapter;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -177,18 +177,20 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    private VehiculoAdapter adapter;
+
     @Override
     public void onAgregarVehiculo(Vehiculo vehiculo) {
-
+         /**
+         * Agrega el vehiculo
+         * */
         try {
-            ServicioVehiculos.getInstance(this).guardarVehiculo(vehiculo);
+            ServicioVehiculos.getInstance(MainActivity.this).guardarVehiculo(vehiculo);
         } catch (IOException e) {
             Toast.makeText(MainActivity.this, "Error al actualizar el archivo", Toast.LENGTH_SHORT).show();
         } catch (ClassNotFoundException e) {
             Toast.makeText(MainActivity.this, "Error al guardar elemento en la lista", Toast.LENGTH_SHORT).show();
         }
         adapter.notifyDataSetChanged();
-
     }
-
 }

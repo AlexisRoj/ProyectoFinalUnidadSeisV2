@@ -2,10 +2,13 @@ package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragmen
 
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,17 +37,25 @@ public class AccountFragment extends PreferenceFragment {
         String titulo = getString(R.string.nombre_app);
         String subTitulo = getString(R.string.cuenta);
 
-   
 
-        MainActivity activity = (MainActivity)getActivity();
-        activity.updateView(titulo,subTitulo);
-        
+        MainActivity activity = (MainActivity) getActivity();
+        activity.updateView(titulo, subTitulo);
+
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+
+
+        assert view != null;
+        view.setBackgroundColor(ContextCompat.getColor(getContext(),android.R.color.white));
+
+
+
+        return view;
+
     }
 }

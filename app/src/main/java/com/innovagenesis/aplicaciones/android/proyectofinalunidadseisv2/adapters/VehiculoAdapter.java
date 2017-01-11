@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Adaptador de vehiculo
  * Created by alexi on 09/01/2017.
  */
 
@@ -53,7 +54,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
     private Activity activity;
 
     public VehiculoAdapter(Activity activity, List<Vehiculo> vehiculo, OnItemClickListener listener) {
-
+        /** Constructor*/
         this.activity = activity;
         this.vehiculo = vehiculo;
         this.listener = listener;

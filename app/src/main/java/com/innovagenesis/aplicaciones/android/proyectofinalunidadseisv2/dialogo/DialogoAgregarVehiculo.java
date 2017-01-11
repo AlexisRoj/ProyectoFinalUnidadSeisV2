@@ -3,6 +3,7 @@ package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.dialogo
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -131,9 +132,8 @@ public class DialogoAgregarVehiculo extends DialogFragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
+    public void onAttach(Context context) {
+        super.onAttach(context);
         try {
             listener = (OnAgregarVehiculoListener) getActivity();
         } catch (ClassCastException e) {

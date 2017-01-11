@@ -30,13 +30,16 @@ import static com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.R
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ParkingFragment extends Fragment
-        implements DialogoAgregarVehiculo.OnAgregarVehiculoListener{
+public class ParkingFragment extends Fragment{
 
     private View view;
     private VehiculoAdapter adapter;
     public ParkingFragment() {
         // Required empty public constructor
+    }
+
+    public interface OnClickGuardarVehiculo{
+        void onGuardarVehiculo(Vehiculo adapter);
     }
 
 
@@ -83,6 +86,7 @@ public class ParkingFragment extends Fragment
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
     }
 
 
@@ -118,11 +122,6 @@ public class ParkingFragment extends Fragment
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-    }
-
-    @Override
-    public void onAgregarVehiculo(Vehiculo vehiculo) {
 
     }
 }

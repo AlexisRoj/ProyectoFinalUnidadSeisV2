@@ -3,6 +3,7 @@ package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapter
 import java.io.Serializable;
 
 /**
+ * Clase encargada de atrapar los valores
  * Created by alexi on 09/01/2017.
  */
 public class Vehiculo implements Serializable{

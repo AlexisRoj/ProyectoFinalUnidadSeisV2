@@ -48,6 +48,10 @@ public class ParkingFragment extends Fragment
 
         view = inflater.inflate(R.layout.fragment_parking, container, false);
 
+        /**
+         * Cambia los titulos del toolbar
+         * */
+
         String titulo = getString(R.string.nombre_app);
         String subTitulo = getString(R.string.parking);
 
@@ -55,12 +59,6 @@ public class ParkingFragment extends Fragment
         activity.updateView(titulo,subTitulo);
 
         crearRecycleView(view);
-        /**
-         * Esta es la parte del recycle view
-         * */
-
-
-
 
         return view;
     }
@@ -89,6 +87,10 @@ public class ParkingFragment extends Fragment
 
 
     public void confirmacion(final int position){
+        /**
+         * Metodo encargardo de eliminar elementos
+         * */
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("¿Está seguro de que desea eliminar el elemento?")
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -112,8 +114,6 @@ public class ParkingFragment extends Fragment
                 }).create().show();
     }
 
-
-    FloatingActionButton fab;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

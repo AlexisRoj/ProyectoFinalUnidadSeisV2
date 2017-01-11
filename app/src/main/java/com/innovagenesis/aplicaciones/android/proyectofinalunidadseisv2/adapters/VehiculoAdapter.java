@@ -17,26 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * Created by alexi on 09/01/2017.
  */
 
 public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.VehiculoViewHolder> {
 
-
-
-
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(VehiculoViewHolder holder, int position);
     }
 
     private OnItemClickListener listener;
-
-
-     /**
-     * Clase Adapter y sus componentes
-     * **/
-
 
     public class VehiculoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -55,7 +45,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
 
         @Override
         public void onClick(View v) {
-            listener.onItemClick(this,getAdapterPosition());
+            listener.onItemClick(this, getAdapterPosition());
         }
     }
 
@@ -70,7 +60,9 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
     }
 
 
-    public List<Vehiculo> getVehiculo(){ return vehiculo;}
+    public List<Vehiculo> getVehiculo() {
+        return vehiculo;
+    }
 
     @Override
     public VehiculoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -83,11 +75,13 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
     @Override
     public void onBindViewHolder(VehiculoViewHolder holder, int position) {
 
+        /** Colores de los cardview*/
+
         holder.txtTitulo.setText(getVehiculo().get(position).getNombre());
         holder.txtDescripcion.setText(getVehiculo().get(position).getDescripcion());
         CardView item = (CardView) holder.itemView.findViewById(R.id.list_item);
 
-        switch (getVehiculo().get(position).getTipo()){
+        switch (getVehiculo().get(position).getTipo()) {
             case SEDAN:
                 item.setCardBackgroundColor(ContextCompat.getColor(activity, R.color.colorSedan));
                 break;
@@ -101,15 +95,13 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
                 item.setCardBackgroundColor(ContextCompat.getColor(activity, R.color.colorCoupe));
                 break;
         }
-            holder.imgTipo.setImageResource(R.drawable.img_tipo);
+        holder.imgTipo.setImageResource(R.drawable.img_tipo);
     }
 
     @Override
     public int getItemCount() {
         return vehiculo.size();
     }
-
-
 
 
 }

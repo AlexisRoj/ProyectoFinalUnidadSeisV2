@@ -73,24 +73,16 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                /**
-                 * Ejecuta el dialogo que guarda el elemento*/
+                /** Ejecuta el dialogo que guarda el elemento */
                 DialogoAgregarVehiculo dialogo = new DialogoAgregarVehiculo();
                 dialogo.show(getSupportFragmentManager(), DialogoAgregarVehiculo.TAG);
 
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Guardando elemento....", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
-
-
-
         navigationView.setNavigationItemSelectedListener(this);
-
     }
-
-
 
 
     public void updateView(String title, String subTitle) {
@@ -101,14 +93,11 @@ public class MainActivity extends AppCompatActivity
             toolbar.setSubtitle(subTitle);
         }
         setSupportActionBar(toolbar);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         drawerLayout.addDrawerListener(toggle);
-
         toggle.syncState();
-
         /**
          *  Muestra y oculta el boton flotante
          * */
@@ -156,18 +145,19 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        /**
+         * Ejecuta el menu del Drawer
+         * */
         int id = item.getItemId();
-
         Fragment fragment = null;
-
         switch (id) {
             case R.id.parking: {
-                //crearRecycleView();
+                /** Carga parking*/
                 fragment = new ParkingFragment();
                 break;
             }
             case R.id.account: {
+                /** Carga las configuraciones*/
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_main, new AccountFragment())
                         .commit();
@@ -178,13 +168,11 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_main, fragment)
                     .commit();
         }
-
         return true;
     }
 

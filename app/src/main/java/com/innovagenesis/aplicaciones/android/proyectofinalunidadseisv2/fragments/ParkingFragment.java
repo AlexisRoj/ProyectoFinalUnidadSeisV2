@@ -26,26 +26,22 @@ import java.io.IOException;
 
 import static com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.R.id.fab;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ParkingFragment extends Fragment{
 
-    private View view;
-    public VehiculoAdapter adapter;
+    private VehiculoAdapter adapter;
+
     public ParkingFragment() {
-        // Required empty public constructor
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        view = inflater.inflate(R.layout.fragment_parking, container, false);
+        View view = inflater.inflate(R.layout.fragment_parking, container, false);
         /**
          * Cambia los titulos del toolbar
          * */
@@ -116,9 +112,4 @@ public class ParkingFragment extends Fragment{
     }
 
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
 }

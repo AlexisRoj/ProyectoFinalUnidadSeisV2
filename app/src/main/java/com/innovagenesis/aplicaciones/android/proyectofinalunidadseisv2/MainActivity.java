@@ -26,15 +26,13 @@ import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preferen
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, DialogoAgregarVehiculo.OnAgregarVehiculoListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        DialogoAgregarVehiculo.OnAgregarVehiculoListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+    Fragment fragment;
 
     FloatingActionButton fab;
 
@@ -44,8 +42,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
 
+        fragment = new ParkingFragment();
+
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_main, new ParkingFragment())
+                .add(R.id.content_main, fragment)
                 .commit();
 
         /** Se instancia el toolbar*/
@@ -146,11 +146,13 @@ public class MainActivity extends AppCompatActivity
          * Ejecuta el menu del Drawer
          * */
         int id = item.getItemId();
-        Fragment fragment = null;
+
         switch (id) {
             case R.id.parking: {
                 /** Carga parking*/
-                fragment = new ParkingFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content_main, new ParkingFragment())
+                        .commit();
                 break;
             }
             case R.id.account: {
@@ -166,9 +168,7 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
 
         if (fragment != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_main, fragment)
-                    .commit();
+
         }
         return true;
     }
@@ -199,8 +199,7 @@ public class MainActivity extends AppCompatActivity
 
         Intent intent = new Intent(MainActivity.this,Login.class);
         startActivity(intent);
-
-        //finish();
+        finish();
 
     }
 }

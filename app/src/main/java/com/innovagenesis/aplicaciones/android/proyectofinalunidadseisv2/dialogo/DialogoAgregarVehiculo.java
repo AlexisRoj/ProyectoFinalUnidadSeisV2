@@ -62,12 +62,15 @@ public class DialogoAgregarVehiculo extends DialogFragment {
             @Override
             public void onClick(View v) {
 
+                /** Campos de captura de datos */
+
                 EditText editTextNoMatricula = editNoMatricula.getEditText();
                 String noMatricula = null;
 
                 EditText editTextIdClientes = editIdCliente.getEditText();
                 String iDCliente = null;
 
+                /** Validacion de no vacios **/
                 if (editTextNoMatricula != null && editTextNoMatricula.getText() != null) {
                     noMatricula = editTextNoMatricula.getText().toString();
                 }
@@ -76,6 +79,7 @@ public class DialogoAgregarVehiculo extends DialogFragment {
                     iDCliente = editTextIdClientes.getText().toString();
                 }
 
+                /** Si existe un vacio no guarda los datos*/
                 Boolean validaAgregarVehiculo = true;
 
                 if ("".equals(noMatricula)){
@@ -128,8 +132,10 @@ public class DialogoAgregarVehiculo extends DialogFragment {
                 break;
         }
 
+        /** Carga vehiculo*/
         Vehiculo vehiculo = new Vehiculo(iDCliente,
                 noMatricula, tipo);
+
         listener.onAgregarVehiculo(vehiculo);
 
         /**
@@ -149,7 +155,7 @@ public class DialogoAgregarVehiculo extends DialogFragment {
         try {
             listener = (OnAgregarVehiculoListener) getContext();
         } catch (ClassCastException e) {
-            throw new ClassCastException("La activity no implementa la interfaz OnAgregarFrutaListener\n" + e);
+            throw new ClassCastException("La activity no implementa la interfaz OnAgregarVehiculoListener\n" + e);
         }
     }
 

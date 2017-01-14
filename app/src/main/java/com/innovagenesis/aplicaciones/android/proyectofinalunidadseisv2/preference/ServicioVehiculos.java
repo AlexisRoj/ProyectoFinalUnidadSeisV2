@@ -5,13 +5,18 @@ import android.widget.Toast;
 
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.Vehiculo;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
  *
+ * Administra los eventos sobre los elementos
  * Created by alexi on 10/01/2017.
  */
 
@@ -57,10 +62,28 @@ public class ServicioVehiculos {
     }
 
     public void eliminar(int position) throws IOException {
+
+        /** Elimina uno por uno*/
         vehiculos.remove(position);
         ObjectOutputStream output = new ObjectOutputStream(context.openFileOutput(nombreArchivo
                 , Context.MODE_PRIVATE));
         output.writeObject(vehiculos);
         output.close();
+
     }
+
+
+    public void eliminarRegistros() throws IOException {
+
+
+        /** Encargado de limpiar el registro*/
+        ObjectOutputStream output = new ObjectOutputStream(context.openFileOutput(nombreArchivo
+                , Context.MODE_PRIVATE));
+        vehiculos.clear();
+        output.close();
+
+    }
+
+
+
 }

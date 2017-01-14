@@ -1,11 +1,14 @@
 package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +27,7 @@ import android.widget.Toast;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.Vehiculo;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.VehiculoAdapter;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.dialogo.DialogoAgregarVehiculo;
+import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.dialogo.DialogoExportarDatos;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.AccountFragment;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.ParkingFragment;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preference.PreferenceConstant;
@@ -35,7 +39,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        DialogoAgregarVehiculo.OnAgregarVehiculoListener, DrawerLayout.DrawerListener {
+        DialogoAgregarVehiculo.OnAgregarVehiculoListener, DrawerLayout.DrawerListener{
+
+
+    /**
+     * Permisos de escritura y lectura de memoria externa
+     * */
+    private static final int REQUEST_CODE = 1;
+    private static final String[] PERMISOS = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+    };
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -49,6 +63,21 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        /**
+         * Solicitud de permisos de escritura y lectura
+         * de memoria externa
+         * */
+        int escribir = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int leer = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        if (escribir != PackageManager.PERMISSION_GRANTED || leer != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, PERMISOS, REQUEST_CODE);
+        }
+
+        /**
+         * Instancia pantalla incial
+         * */
 
         fragment = new ParkingFragment();
 
@@ -81,14 +110,9 @@ public class MainActivity extends AppCompatActivity
 
                 Snackbar.make(view, "Guardando elemento....", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-
-
             }
         });
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
     }
 
 
@@ -118,9 +142,7 @@ public class MainActivity extends AppCompatActivity
         } else {
             fab.setVisibility(View.INVISIBLE);
         }
-
     }
-
 
     @Override
     public void onBackPressed() {
@@ -148,7 +170,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.exportar_registros) {
-            return true;
+            DialogoExportarDatos dialogo = new DialogoExportarDatos();
+
+            dialogo.show(getSupportFragmentManager(), DialogoExportarDatos.TAG);
         }
         if (id == R.id.logout) {
             borrarPreference();
@@ -254,5 +278,6 @@ public class MainActivity extends AppCompatActivity
         if (nav_user != null)
             nav_user.setText(nombreUsuario);
     }
+
 
 }

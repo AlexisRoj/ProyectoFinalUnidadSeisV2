@@ -32,6 +32,10 @@
     <string name="id_del_cliente">ID del cliente</string>
     <string name="exportar_registros">Exportar Registros</string>
     <string name="logout">Cerrar sección</string>
+    <string name="exportWithClear">Sin conservar los registros localmente</string>
+    <string name="exportWithoutClear">Conservando los registros localmente</string>
+    <string name="btnOk">Aceptar</string>
+    <string name="btnCancel">Cancelar</string>
 
     <!--Array Spinner Vehiculo-->
 
@@ -40,7 +44,7 @@
         <item>Sedan</item>
         <item>PickUp</item>
         <item>OFFRoad</item>
-        <item>Copupe</item>
+        <item>Coupe</item>
     </string-array>
 
 </resources>

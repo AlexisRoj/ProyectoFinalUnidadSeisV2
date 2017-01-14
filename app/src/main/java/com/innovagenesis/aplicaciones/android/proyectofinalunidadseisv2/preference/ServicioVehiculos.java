@@ -33,9 +33,7 @@ public class ServicioVehiculos {
             this.vehiculos = new ArrayList<>();
             cargarDatos();
         }catch (IOException e){
-
          Toast.makeText(context,"No existen items registrados",Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -45,6 +43,9 @@ public class ServicioVehiculos {
         return instance;
     }
 
+    /**
+     * Guarda un elemento de vehiculo
+     * */
     public void guardarVehiculo(Vehiculo vehiculo) throws IOException {
         vehiculos.add(vehiculo);
         ObjectOutputStream output =
@@ -54,6 +55,9 @@ public class ServicioVehiculos {
         output.close();
     }
 
+    /**
+     * Carga los datos del ArrayList<Vehiculo>
+     * **/
     public ArrayList<Vehiculo> cargarDatos() throws IOException, ClassNotFoundException {
         ObjectInputStream input = new ObjectInputStream(context.openFileInput(nombreArchivo));
         vehiculos = (ArrayList<Vehiculo>) input.readObject();
@@ -62,19 +66,15 @@ public class ServicioVehiculos {
     }
 
     public void eliminar(int position) throws IOException {
-
         /** Elimina uno por uno*/
         vehiculos.remove(position);
         ObjectOutputStream output = new ObjectOutputStream(context.openFileOutput(nombreArchivo
                 , Context.MODE_PRIVATE));
         output.writeObject(vehiculos);
         output.close();
-
     }
 
-
     public void eliminarRegistros() throws IOException {
-
 
         /** Encargado de limpiar el registro*/
         ObjectOutputStream output = new ObjectOutputStream(context.openFileOutput(nombreArchivo

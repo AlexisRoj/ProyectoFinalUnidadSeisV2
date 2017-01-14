@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         /**
-         * Ejecuta el menu del Drawer
+         * Ejecuta las opciones del menu del Drawer
          * */
         int id = item.getItemId();
 

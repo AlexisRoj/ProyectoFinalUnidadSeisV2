@@ -23,6 +23,8 @@ import java.util.List;
 
 public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.VehiculoViewHolder> {
 
+
+
     public interface OnItemClickListener {
         void onItemClick(VehiculoViewHolder holder, int position);
     }

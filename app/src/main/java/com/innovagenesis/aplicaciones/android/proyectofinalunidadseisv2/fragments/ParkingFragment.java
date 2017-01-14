@@ -61,8 +61,11 @@ public class ParkingFragment extends Fragment{
     }
 
 
-    private void crearRecycleView(View view) {
+    public void crearRecycleView(View view) {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+
+
+
         try {
             adapter = new VehiculoAdapter(getActivity(), ServicioVehiculos.getInstance(getActivity()).cargarDatos(),
                     new VehiculoAdapter.OnItemClickListener() {
@@ -78,12 +81,17 @@ public class ParkingFragment extends Fragment{
         }
 
         /** Agraga el adapter al Recycleview*/
-        adapter.notifyDataSetChanged();
-        /** Actualiza el recycleView*/
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
-        recyclerView.clearOnScrollListeners();
+
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+            /** Actualiza el recycleView*/
+
+            recyclerView.setAdapter(adapter);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.clearOnScrollListeners();
+        }
+
 
     }
 

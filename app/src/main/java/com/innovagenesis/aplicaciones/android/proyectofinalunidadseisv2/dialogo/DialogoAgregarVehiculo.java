@@ -89,6 +89,8 @@ public class DialogoAgregarVehiculo extends DialogFragment {
 
                 if (validaAgregarVehiculo) {
 
+                    /** Agrega el nuevo vehiculo*/
+
                     agregarVehiculo(noMatricula, iDCliente);
                 }
             }
@@ -135,7 +137,7 @@ public class DialogoAgregarVehiculo extends DialogFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            listener = (OnAgregarVehiculoListener) getActivity();
+            listener = (OnAgregarVehiculoListener) getContext();
         } catch (ClassCastException e) {
             throw new ClassCastException("La activity no implementa la interfaz OnAgregarFrutaListener\n" + e);
         }

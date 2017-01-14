@@ -4,7 +4,7 @@
     <PreferenceCategory android:title="Componentes de texto">
 
         <EditTextPreference
-            android:key="nombreUuario"
+            android:key="nombreUsuario"
             android:title="@string/nombUser"
             android:summary="@string/descNombUser"/>
 

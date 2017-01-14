@@ -2,9 +2,11 @@ package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragmen
 
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -28,6 +30,7 @@ public class AccountFragment extends PreferenceFragment {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +39,6 @@ public class AccountFragment extends PreferenceFragment {
 
         String titulo = getString(R.string.nombre_app);
         String subTitulo = getString(R.string.cuenta);
-
 
         MainActivity activity = (MainActivity) getActivity();
         activity.updateView(titulo, subTitulo);

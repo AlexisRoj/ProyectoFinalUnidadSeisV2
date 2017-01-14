@@ -3,6 +3,7 @@ package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -15,7 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.Vehiculo;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.dialogo.DialogoAgregarVehiculo;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.AccountFragment;
@@ -27,7 +30,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        DialogoAgregarVehiculo.OnAgregarVehiculoListener {
+        DialogoAgregarVehiculo.OnAgregarVehiculoListener, DrawerLayout.DrawerListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
+
         /**
          * Boton Flotante
          * */
@@ -74,6 +78,11 @@ public class MainActivity extends AppCompatActivity
             }
         });
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+        /** Inicia cambiando el titulo del usuario*/
+
     }
 
 
@@ -84,11 +93,15 @@ public class MainActivity extends AppCompatActivity
             toolbar.setTitle(title);
             toolbar.setSubtitle(subTitle);
         }
+
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
+
         drawerLayout.addDrawerListener(toggle);
+        drawerLayout.addDrawerListener(this);
+
         toggle.syncState();
         /**
          *  Muestra y oculta el boton flotante
@@ -131,11 +144,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.exportar_registros) {
             return true;
         }
-        if (id == R.id.logout){
+        if (id == R.id.logout) {
             borrarPreference();
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -167,15 +178,12 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-        if (fragment != null) {
-
-        }
         return true;
     }
 
     @Override
     public void onAgregarVehiculo(Vehiculo vehiculo) {
-         /**
+        /**
          * Agrega el vehiculo
          * */
         try {
@@ -197,9 +205,48 @@ public class MainActivity extends AppCompatActivity
         edit.remove(PreferenceConstant.PREF_KEY_USERNAME);
         edit.apply();
 
-        Intent intent = new Intent(MainActivity.this,Login.class);
+        Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
         finish();
 
     }
+
+    @Override
+    public void onDrawerSlide(View drawerView, float slideOffset) {
+
+    }
+
+    @Override
+    public void onDrawerOpened(View drawerView) {
+
+    }
+
+
+    @Override
+    public void onDrawerClosed(View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerStateChanged(int newState) {
+        onChangeTitleDrawer();
+
+    }
+
+    private void onChangeTitleDrawer() {
+        /**
+         *  Cambia titulo del drawer, es necesario implementar el
+         * drawerLayout.addDrawerListener(this)
+         * */
+
+        SharedPreferences configuraciones = PreferenceManager.getDefaultSharedPreferences(this);
+        String nombreUsuario = configuraciones.getString("nombreUsuario", null);
+
+        View hView  = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.textUserDrawer);
+
+        if (nav_user != null)
+            nav_user.setText(nombreUsuario);
+    }
+
 }

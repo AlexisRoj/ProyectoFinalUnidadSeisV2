@@ -1,6 +1,7 @@
 package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preference;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.Vehiculo;
 
@@ -10,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
+ *
  * Created by alexi on 10/01/2017.
  */
 
@@ -26,10 +28,9 @@ public class ServicioVehiculos {
             this.vehiculos = new ArrayList<>();
             cargarDatos();
         }catch (IOException e){
-            guardarVehiculo(new Vehiculo("836157", "110210888", Vehiculo.Tipo.SEDAN));
-            guardarVehiculo(new Vehiculo("203016", "21020077", Vehiculo.Tipo.OFFROAD));
-            guardarVehiculo(new Vehiculo("XXX969", "403340822", Vehiculo.Tipo.PICKUP));
-            this.context = context;
+
+         Toast.makeText(context,"No existen items registrados",Toast.LENGTH_SHORT).show();
+
         }
     }
 

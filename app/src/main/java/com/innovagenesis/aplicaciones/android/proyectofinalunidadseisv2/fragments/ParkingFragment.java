@@ -2,7 +2,9 @@ package com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragmen
 
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -50,6 +52,7 @@ public class ParkingFragment extends Fragment{
         String subTitulo = getString(R.string.parking);
 
         MainActivity activity = (MainActivity)getActivity();
+
         activity.updateView(titulo,subTitulo);
 
         crearRecycleView(view);
@@ -80,6 +83,8 @@ public class ParkingFragment extends Fragment{
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        recyclerView.clearOnScrollListeners();
+
     }
 
 

@@ -18,6 +18,7 @@ import android.widget.Spinner;
 
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.R;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.adapters.Vehiculo;
+import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragments.ParkingFragment;
 
 /**
  * Clase encargada de administrar el dialogo de captura de datos
@@ -130,6 +131,15 @@ public class DialogoAgregarVehiculo extends DialogFragment {
         Vehiculo vehiculo = new Vehiculo(iDCliente,
                 noMatricula, tipo);
         listener.onAgregarVehiculo(vehiculo);
+
+        /**
+         * Necesario para refrescar el recycleView
+         * despues de agregar un nuevo elemento
+         * **/
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_main,new ParkingFragment())
+                .commit();
+
         dismiss();
     }
 

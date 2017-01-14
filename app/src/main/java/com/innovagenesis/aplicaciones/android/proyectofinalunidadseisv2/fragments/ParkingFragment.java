@@ -31,7 +31,7 @@ import static com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.R
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ParkingFragment extends Fragment{
+public class ParkingFragment extends Fragment {
 
     private VehiculoAdapter adapter;
 
@@ -51,9 +51,9 @@ public class ParkingFragment extends Fragment{
         String titulo = getString(R.string.nombre_app);
         String subTitulo = getString(R.string.parking);
 
-        MainActivity activity = (MainActivity)getActivity();
+        MainActivity activity = (MainActivity) getActivity();
 
-        activity.updateView(titulo,subTitulo);
+        activity.updateView(titulo, subTitulo);
 
         crearRecycleView(view);
 
@@ -65,7 +65,6 @@ public class ParkingFragment extends Fragment{
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
 
-
         try {
             adapter = new VehiculoAdapter(getActivity(), ServicioVehiculos.getInstance(getActivity()).cargarDatos(),
                     new VehiculoAdapter.OnItemClickListener() {
@@ -74,9 +73,9 @@ public class ParkingFragment extends Fragment{
                             confirmacion(position);
                         }
                     });
-        }catch (IOException e){
+        } catch (IOException e) {
             Toast.makeText(getContext(), "Error al cargar el archivo", Toast.LENGTH_SHORT).show();
-        }catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             Toast.makeText(getContext(), "Error al cargar la lista", Toast.LENGTH_SHORT).show();
         }
 
@@ -90,13 +89,14 @@ public class ParkingFragment extends Fragment{
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.clearOnScrollListeners();
+
         }
 
 
     }
 
 
-    public void confirmacion(final int position){
+    public void confirmacion(final int position) {
         /**
          * Metodo encargardo de eliminar elementos
          * */

@@ -87,18 +87,22 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
         switch (getVehiculo().get(position).getTipo()) {
             case SEDAN:
                 item.setCardBackgroundColor(ContextCompat.getColor(activity, R.color.colorSedan));
+                holder.imgTipo.setImageResource(R.drawable.sedan);
                 break;
             case PICKUP:
                 item.setCardBackgroundColor(ContextCompat.getColor(activity, R.color.colorPickup));
+                holder.imgTipo.setImageResource(R.drawable.pickup);
                 break;
             case OFFROAD:
                 item.setCardBackgroundColor(ContextCompat.getColor(activity, R.color.colorOffroad));
+                holder.imgTipo.setImageResource(R.drawable.offroad);
                 break;
             case COUPE:
                 item.setCardBackgroundColor(ContextCompat.getColor(activity, R.color.colorCoupe));
+                holder.imgTipo.setImageResource(R.drawable.coupe);
                 break;
         }
-        holder.imgTipo.setImageResource(R.drawable.img_tipo);
+
     }
 
     @Override

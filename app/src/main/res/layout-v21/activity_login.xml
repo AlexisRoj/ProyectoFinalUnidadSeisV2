@@ -18,13 +18,23 @@
         <TextView
             android:id="@+id/txtTitleLogin"
             style="@style/txtsLogin"
+            android:padding="5dp"
+            android:elevation="20dp"
+            android:background="#E0E0E0"
             android:text="@string/txtTitleLogin"
-            android:textSize="18sp"
+            android:textColor="#03A9F4"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
+            android:layout_marginTop="5dp"
+            android:padding="5dp"
             android:id="@+id/txtAsistenciaLogin"
+            android:textColor="#03A9F4"
+            android:textStyle="bold"
+            android:background="#E0E0E0"
             style="@style/txtsLogin"
+            android:elevation="20dp"
             android:text="@string/txtAsistenciaLogin" />
 
     </LinearLayout>
@@ -34,6 +44,7 @@
         android:id="@+id/imageView3"
         android:layout_width="158dp"
         android:layout_height="134dp"
+        android:elevation="12dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:adjustViewBounds="false"
@@ -44,10 +55,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:elevation="12dp"
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
-            android:elevation="12dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
             android:background="#FFF"
@@ -86,16 +97,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFF"
-            android:textColor="#000"
+            android:textColor="#03A9F4"
             android:textStyle="bold"
             android:paddingLeft="15dp"
             android:text="@string/recordarme" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:padding="5dp"
+            android:textColor="#03A9F4"
             android:id="@+id/ingresarLogin"
             android:text="@string/ingresarLogin" />
 

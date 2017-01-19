@@ -32,6 +32,7 @@ public class ServicioVehiculos {
             this.context = context;
             this.vehiculos = new ArrayList<>();
             cargarDatos();
+            cargarDatos2();
         } catch (IOException e) {
             Toast.makeText(context, "No existen items registrados", Toast.LENGTH_SHORT).show();
         }
@@ -66,7 +67,6 @@ public class ServicioVehiculos {
     }
 
 
-
     public void eliminar(int position) throws IOException {
         /** Elimina uno por uno*/
         vehiculos.remove(position);
@@ -84,37 +84,32 @@ public class ServicioVehiculos {
         vehiculos.clear();
         output.close();
 
-
     }
 
-    public void recorrer() throws IOException {
 
-        ObjectInputStream ois = null;
+    public void cargarDatos2() throws IOException, ClassNotFoundException {
+
+        ObjectInputStream inputs = null;
+        int i = 0;
 
         try {
-            FileInputStream fis = context.openFileInput(nombreArchivo);
+            inputs = new ObjectInputStream(context.openFileInput(nombreArchivo));
 
-            ois = new ObjectInputStream(fis);
             while (true) {
 
-
-                Vehiculo vehiculo = (Vehiculo) ois.readObject();
-
-                System.out.println("1: "+vehiculo.getNombre());
-                System.out.println("2: "+vehiculo.getTipo());
-                System.out.println("3: "+vehiculo.getDescripcion());
-
+                i = i +1;
+                vehiculos = (ArrayList<Vehiculo>) inputs.readObject();
+                System.out.println("1: " + vehiculos.get(i).getNombre());
+                System.out.println("2: " + vehiculos.get(i).getTipo());
+                System.out.println("3: " + vehiculos.get(i).getDescripcion());
+                System.out.println("*********************************");
             }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            ois.close();
+        } catch (IOException io) {
+            System.out.println("**************FIN*****************");
+        } finally {
+            inputs.close();
         }
+
     }
 
 

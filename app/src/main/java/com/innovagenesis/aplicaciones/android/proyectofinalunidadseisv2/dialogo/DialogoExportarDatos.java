@@ -50,6 +50,7 @@ public class DialogoExportarDatos extends DialogFragment {
             @Override
             public void onClick(View v) {
 
+                /** Valida la opcion selecionada*/
 
                 if (radioLimpiar.isChecked()){
                     try {

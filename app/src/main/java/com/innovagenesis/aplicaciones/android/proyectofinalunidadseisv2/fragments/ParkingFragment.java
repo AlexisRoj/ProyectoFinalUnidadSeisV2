@@ -55,7 +55,7 @@ public class ParkingFragment extends Fragment {
 
         activity.updateView(titulo, subTitulo);
 
-        crearRecycleView(view);
+        crearRecycleView(view); /**Crea el reccycleView*/
 
         return view;
     }
@@ -79,7 +79,7 @@ public class ParkingFragment extends Fragment {
             Toast.makeText(getContext(), "Error al cargar la lista", Toast.LENGTH_SHORT).show();
         }
 
-        /** Agraga el adapter al Recycleview*/
+        /** Agraga el adapter(cardView) al Recycleview*/
 
         if (adapter != null) {
             adapter.notifyDataSetChanged();

@@ -40,7 +40,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
 
 
         public VehiculoViewHolder(View itemView) {
-            /** Desplieg los items del recycleView*/
+            /** Desplieg los items del recycleView, es el adaptar de cada elemento*/
             super(itemView);
 
             txtTitulo = (TextView) itemView.findViewById(R.id.txt_titulo);
@@ -110,7 +110,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
     }
 
     @Override
-    /** Elementos del RecycleView*/
+    /** Cantidad de elementos del RecycleView*/
     public int getItemCount() {
         return vehiculo.size();
     }

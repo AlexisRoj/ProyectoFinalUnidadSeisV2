@@ -33,7 +33,10 @@ import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.fragment
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preference.PreferenceConstant;
 import com.innovagenesis.aplicaciones.android.proyectofinalunidadseisv2.preference.ServicioVehiculos;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.logout) {
             borrarPreference();
+
         }
         return super.onOptionsItemSelected(item);
     }

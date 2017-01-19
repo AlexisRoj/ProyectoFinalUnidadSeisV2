@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Adaptador de vehiculo
+ * Crea el recycleView
  * Created by alexi on 09/01/2017.
  */
 
@@ -26,6 +27,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
 
 
     public interface OnItemClickListener {
+        /** Interface que espera el evento precionar*/
         void onItemClick(VehiculoViewHolder holder, int position);
     }
 
@@ -38,6 +40,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
 
 
         public VehiculoViewHolder(View itemView) {
+            /** Desplieg los items del recycleView*/
             super(itemView);
 
             txtTitulo = (TextView) itemView.findViewById(R.id.txt_titulo);
@@ -69,6 +72,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
 
     @Override
     public VehiculoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        /** Instancia el cardView, utiliza el fragment template*/
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.vehiculo_item_template, parent, false);
 
@@ -78,7 +82,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
     @Override
     public void onBindViewHolder(VehiculoViewHolder holder, int position) {
 
-        /** Colores de los cardview*/
+        /** Cambia los Colores y las imagenes de los cardview*/
 
         holder.txtTitulo.setText(getVehiculo().get(position).getNombre());
         holder.txtDescripcion.setText(getVehiculo().get(position).getDescripcion());
@@ -106,6 +110,7 @@ public class VehiculoAdapter extends RecyclerView.Adapter<VehiculoAdapter.Vehicu
     }
 
     @Override
+    /** Elementos del RecycleView*/
     public int getItemCount() {
         return vehiculo.size();
     }

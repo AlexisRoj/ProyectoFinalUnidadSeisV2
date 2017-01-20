@@ -84,23 +84,17 @@ public class ParkingFragment extends Fragment {
         if (adapter != null) {
             adapter.notifyDataSetChanged();
             /** Actualiza el recycleView*/
-
             recyclerView.setAdapter(adapter);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.clearOnScrollListeners();
-
         }
-
-
     }
-
 
     public void confirmacion(final int position) {
         /**
          * Metodo encargardo de eliminar elementos
          * */
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("¿Está seguro de que desea eliminar el elemento?")
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -123,6 +117,5 @@ public class ParkingFragment extends Fragment {
                     }
                 }).create().show();
     }
-
 
 }

@@ -42,6 +42,7 @@ public class DialogoExportarDatos extends DialogFragment {
         builder.setView(view);
 
         final RadioButton radioLimpiar = (RadioButton) view.findViewById(R.id.radioLimpiarReg);
+        final RadioButton radioExport = (RadioButton) view.findViewById(R.id.radioExportarReg);
 
         Button btnAceptar = (Button) view.findViewById(R.id.btnExpOk);
         Button btnCancelar = (Button) view.findViewById(R.id.btnExpCancel);
@@ -52,19 +53,35 @@ public class DialogoExportarDatos extends DialogFragment {
 
                 /** Valida la opcion selecionada*/
 
-                if (radioLimpiar.isChecked()){
-                    try {
-                        ServicioVehiculos servicioVehiculos
-                                = ServicioVehiculos.getInstance(getContext());
-                        //servicioVehiculos.eliminarRegistros();
-                        servicioVehiculos.cargarDatos2();
+                ServicioVehiculos servicioVehiculos;
 
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                if (radioLimpiar.isChecked()){
+                    /** Exporta y limpia pantalla. elimina el archivo*/
+                    try {
+
+                        servicioVehiculos
+                                = ServicioVehiculos.getInstance(getContext());
+
+                        servicioVehiculos.mExportDatos();
+                        servicioVehiculos.eliminarRegistros();
+
+                    } catch (ClassNotFoundException | IOException e) {
                         e.printStackTrace();
                     }
                 }
+
+                if (radioExport.isChecked()){
+                    try {
+                        servicioVehiculos
+                                = ServicioVehiculos.getInstance(getContext());
+
+                        servicioVehiculos.mExportDatos();
+
+                    } catch (ClassNotFoundException | IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
 
                 dismiss();
                 /**

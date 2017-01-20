@@ -157,7 +157,8 @@ public class MainActivity extends AppCompatActivity
             dialogo.show(getSupportFragmentManager(), DialogoExportarDatos.TAG);
         }
         if (id == R.id.logout) {
-            borrarPreference();
+
+           borrarPreference();
 
         }
         return super.onOptionsItemSelected(item);

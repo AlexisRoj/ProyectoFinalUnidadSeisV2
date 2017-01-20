@@ -23,16 +23,18 @@ import java.util.ArrayList;
 public class ServicioVehiculos {
 
     private ArrayList<Vehiculo> vehiculos;
+    private ArrayList<Vehiculo> vehiculo;
     private final String nombreArchivo = "vehiculos.txt";
     private static ServicioVehiculos instance;
     private Context context;
 
-    private ServicioVehiculos(Context context) throws ClassNotFoundException, IOException {
+    public ServicioVehiculos(Context context) throws ClassNotFoundException, IOException {
         try {
             this.context = context;
             this.vehiculos = new ArrayList<>();
+            this.vehiculo = new ArrayList<>();
             cargarDatos();
-            cargarDatos2();
+            //cargarDatos2();
         } catch (IOException e) {
             Toast.makeText(context, "No existen items registrados", Toast.LENGTH_SHORT).show();
         }
@@ -96,13 +98,18 @@ public class ServicioVehiculos {
             inputs = new ObjectInputStream(context.openFileInput(nombreArchivo));
 
 
-            vehiculos = (ArrayList<Vehiculo>) inputs.readObject();
 
-            for (int i = 0; i<= vehiculos.size(); i++) {
-                System.out.println("1: " + vehiculos.get(i).getNombre());
-                System.out.println("2: " + vehiculos.get(i).getTipo());
-                System.out.println("3: " + vehiculos.get(i).getDescripcion());
+            vehiculo = (ArrayList<Vehiculo>) inputs.readObject();
+
+            for (int i = 0; i < vehiculo.size(); i++) {
+                System.out.println("1: " + vehiculo.get(i).getNombre());
+                System.out.println("2: " + vehiculo.get(i).getTipo());
+                System.out.println("3: " + vehiculo.get(i).getDescripcion());
                 System.out.println("*********************************");
+
+               /* Toast.makeText(context, vehiculos.get(i).getNombre() + " " + vehiculos.get(i).getTipo()
+                        + " " + vehiculos.get(i).getDescripcion(), Toast.LENGTH_LONG).show();*/
+
             }
 
         } catch (IOException io) {

@@ -56,7 +56,8 @@ public class DialogoExportarDatos extends DialogFragment {
                     try {
                         ServicioVehiculos servicioVehiculos
                                 = ServicioVehiculos.getInstance(getContext());
-                        servicioVehiculos.eliminarRegistros();
+                        //servicioVehiculos.eliminarRegistros();
+                        servicioVehiculos.cargarDatos2();
 
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();

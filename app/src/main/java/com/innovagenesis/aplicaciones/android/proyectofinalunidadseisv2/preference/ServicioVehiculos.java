@@ -90,20 +90,21 @@ public class ServicioVehiculos {
     public void cargarDatos2() throws IOException, ClassNotFoundException {
 
         ObjectInputStream inputs = null;
-        int i = 0;
+
 
         try {
             inputs = new ObjectInputStream(context.openFileInput(nombreArchivo));
 
-            while (true) {
 
-                i = i +1;
-                vehiculos = (ArrayList<Vehiculo>) inputs.readObject();
+            vehiculos = (ArrayList<Vehiculo>) inputs.readObject();
+
+            for (int i = 0; i<= vehiculos.size(); i++) {
                 System.out.println("1: " + vehiculos.get(i).getNombre());
                 System.out.println("2: " + vehiculos.get(i).getTipo());
                 System.out.println("3: " + vehiculos.get(i).getDescripcion());
                 System.out.println("*********************************");
             }
+
         } catch (IOException io) {
             System.out.println("**************FIN*****************");
         } finally {

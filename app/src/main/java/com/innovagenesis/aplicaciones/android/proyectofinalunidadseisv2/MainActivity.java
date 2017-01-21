@@ -94,6 +94,10 @@ public class MainActivity extends AppCompatActivity
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
 
+        /** Elemento selecionado del drawer*/
+
+        navigationView.getMenu().getItem(0).setChecked(true);
+
 
         /**
          * Boton Flotante

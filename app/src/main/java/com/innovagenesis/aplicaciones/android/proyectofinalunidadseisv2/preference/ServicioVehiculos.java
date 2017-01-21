@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
@@ -89,31 +90,32 @@ public class ServicioVehiculos {
     }
 
 
-    public void cargarDatos2() throws IOException, ClassNotFoundException {
+    public void mExportDatos() throws IOException, ClassNotFoundException {
+
+        /** Metodo encargado de exportar los registros a la memoria externa*/
 
         ObjectInputStream inputs = null;
 
+        File archivo = new File(context.getExternalFilesDir(null), nombreArchivo);
+        ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(archivo));
 
         try {
             inputs = new ObjectInputStream(context.openFileInput(nombreArchivo));
 
-
-
             vehiculo = (ArrayList<Vehiculo>) inputs.readObject();
 
             for (int i = 0; i < vehiculo.size(); i++) {
-                System.out.println("1: " + vehiculo.get(i).getNombre());
-                System.out.println("2: " + vehiculo.get(i).getTipo());
-                System.out.println("3: " + vehiculo.get(i).getDescripcion());
-                System.out.println("*********************************");
 
-               /* Toast.makeText(context, vehiculos.get(i).getNombre() + " " + vehiculos.get(i).getTipo()
-                        + " " + vehiculos.get(i).getDescripcion(), Toast.LENGTH_LONG).show();*/
+                Vehiculo export = new Vehiculo(vehiculo.get(i).getNombre(),
+                        vehiculo.get(i).getTipo().toString(),
+                        vehiculo.get(i).getDescripcion());
 
+                output.writeObject(export);
+                Toast.makeText(context, "Exportacion Exitosa", Toast.LENGTH_SHORT).show();
             }
 
         } catch (IOException io) {
-            System.out.println("**************FIN*****************");
+            System.out.println("Error en el metodo mExportDatos de ServicioVehiculos");
         } finally {
             inputs.close();
         }

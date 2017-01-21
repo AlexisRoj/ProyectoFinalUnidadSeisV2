@@ -36,6 +36,8 @@
     <string name="exportWithoutClear">Conservando los registros localmente</string>
     <string name="btnOk">Aceptar</string>
     <string name="btnCancel">Cancelar</string>
+    <string name="matricula">Matricula:</string>
+    <string name="no_id">No. Identificación</string>
 
     <!--Array Spinner Vehiculo-->
 

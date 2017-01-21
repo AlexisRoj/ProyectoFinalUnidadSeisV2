@@ -8,6 +8,9 @@ import java.io.Serializable;
  */
 public class Vehiculo implements Serializable{
 
+
+
+
     public enum Tipo {
         SEDAN, PICKUP, OFFROAD, COUPE
     }
@@ -15,11 +18,18 @@ public class Vehiculo implements Serializable{
     private String nombre;
     private String descripcion;
     private Tipo tipo;
+    private String tipo2;
 
     public Vehiculo(String nombre, String descripcion, Tipo tipo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tipo = tipo;
+    }
+
+    public Vehiculo(String nombre, String descripcion, String tipo2) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.tipo2 = tipo2;
     }
 
     public String getNombre() {
@@ -44,5 +54,13 @@ public class Vehiculo implements Serializable{
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    public String getTipo2() {
+        return tipo2;
+    }
+
+    public void setTipo2(String tipo2) {
+        this.tipo2 = tipo2;
     }
 }

@@ -115,7 +115,7 @@ public class ServicioVehiculos {
             }
 
         } catch (IOException io) {
-            System.out.println("Finalizado con exito");
+            System.out.println("Error en el metodo mExportDatos de ServicioVehiculos");
         } finally {
             inputs.close();
         }

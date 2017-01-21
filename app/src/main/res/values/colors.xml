@@ -6,10 +6,19 @@
 
     <!-- Colores de los cardview -->
 
-    <color name="colorSedan">#00695C</color>
-    <color name="colorPickup">#827717</color>
-    <color name="colorOffroad">#512DA8</color>
-    <color name="colorCoupe">#D32F2F</color>
+    <color name="colorSedan2">#00695C</color>
+    <color name="colorPickup2">#827717</color>
+    <color name="colorOffroad2">#512DA8</color>
+    <color name="colorCoupe2">#D32F2F</color>
+
+    <color name="colorSedan">#E3F2FD</color>
+    <color name="colorPickup">#B2DFDB</color>
+    <color name="colorOffroad">#C8E6C9</color>
+    <color name="colorCoupe">#D7CCC8</color>
+
+
+
+    <color name="textRecycleView">#000</color>
 
 
 
